@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
+    public GameObject WayPointsParent; // „R„|„u„„„‘„„ „~„p„ƒ„„„‚„€„z„{„y „~„u „x„p„q„„„„ „r„„ƒ„„„p„r„y„„„
     List<GameObject> wayPoints = new List<GameObject>();
     int wayIndex = 0;
-    public float speed = 10f;
+    public float speed = 15f;
     private void Start()
     {
-        wayPoints = GameObject.Find("Main Camera").GetComponent<GameControllerScript>().WayPoints;
+        //wayPoints = GameObject.Find("Main Camera").GetComponent<GameControllerScript>().WayPoints;
+        GetWayPoints();
     }
     private void Update()
     {
@@ -30,6 +32,13 @@ public class EnemyScript : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+        }
+    }
+    public void GetWayPoints()
+    {
+        for (int i = 0; i < WayPointsParent.transform.childCount; i++)
+        {
+            wayPoints.Add(WayPointsParent.transform.GetChild(i).gameObject);
         }
     }
 }
