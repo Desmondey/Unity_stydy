@@ -6,22 +6,37 @@ public class TestCorutine : MonoBehaviour
 {
     [SerializeField] private GameObject _enemyPref;
     private Vector2 _enemySpawnVec;
+    private List<GameObject> _enemyList = new List<GameObject>();
     private void Start()
-    {
-        
+    {  
+        StartCoroutine(Spawn());       
     }
     void Update()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            _enemySpawnVec = new Vector2(Random.Range(0.01f, 1f), Random.Range(0.1f, 2f));
-            StartCoroutine("Spawn");
-        }        
+    {           
+        
     }
     private IEnumerator Spawn()
     {
-        GameObject Enemy = Instantiate(_enemyPref, _enemySpawnVec, Quaternion.identity);
-        Enemy.transform.SetParent(gameObject.transform);
-        yield return new WaitForSeconds(1f);
+        while (true)
+        {   
+            _enemySpawnVec = new Vector2(Random.Range(0.01f, 1f), Random.Range(0.1f, 2f));             
+            GameObject Enemy = Instantiate(_enemyPref, _enemySpawnVec, Quaternion.identity);
+            Enemy.transform.SetParent(gameObject.transform);
+            _enemyList.Add(Enemy);
+            yield return new WaitForSeconds(0.1f);
+            if (_enemyList.Count >= 15f)
+            {
+                for (int i = 1; i <= _enemyList.Count - 8f; i++)
+                {
+                    print(i);
+                    Destroy(_enemyList[i]);
+                    _enemyList.RemoveAt(i);
+                }
+            }
+        }
+    }
+    private void ClearEnemyList(List<GameObject> EnemyList)
+    {
+        EnemyList.Clear();
     }
 }
