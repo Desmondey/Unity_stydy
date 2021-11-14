@@ -53,11 +53,15 @@
     <UnityVersion>2020.3.16f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\TestCorutine.cs" />
     <Compile Include="Assets\Scripts\CallScript.cs" />
     <Compile Include="Assets\Scripts\EnemyScript.cs" />
     <Compile Include="Assets\Scripts\GameControllerScript.cs" />
     <Compile Include="Assets\Scripts\EnemySpawnerScript.cs" />
-    <Compile Include="Assets\Scripts\TestCorutine.cs" />
+    <Compile Include="Assets\Scripts\LvlManagerScript.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Resources\LvlGround1.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
