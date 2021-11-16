@@ -18,6 +18,7 @@ public class LvlManagerScript : MonoBehaviour
     void Start()
     {
         CreateLvl();
+        LoadWayPoints();
     }
     void CreateLvl()
     {
@@ -44,6 +45,17 @@ public class LvlManagerScript : MonoBehaviour
         float sprSizeY = tempCell.GetComponent<SpriteRenderer>().bounds.size.y;
 
         tempCell.transform.position = new Vector2(wVec.x + (sprSizeX * x), wVec.y + (sprSizeY * -y));
+        if (isGround)
+        {
+            tempCell.GetComponent<CallScript>().isGround = true;
+            if (firstCell == null)
+            {
+                firstCell = tempCell;
+                curWayX = x;
+                curWayY = y;
+            }
+        }
+        allCells[y, x] = tempCell;
     }
     string[] LoadLvlText(int lvlNumber)
     {
@@ -53,12 +65,44 @@ public class LvlManagerScript : MonoBehaviour
     }
     void LoadWayPoints()
     {
-        GameObject currWay;
+        GameObject currWayGo;
         WayPoints.Add(firstCell);
 
         while (true)
         {
+            currWayGo = null;
+            if (curWayX > 0 && allCells[curWayY, curWayX - 1].GetComponent<CallScript>().isGround &&
+                !WayPoints.Exists(x => x == allCells[curWayY, curWayX - 1]))
+            {
+                currWayGo = allCells[curWayY, curWayX - 1];
+                curWayX--;
+                Debug.Log("Next Cell is Left");
+            }
+            else if (curWayX < (fieldWidth - 1) && allCells[curWayY, curWayX + 1].GetComponent<CallScript>().isGround &&
+                !WayPoints.Exists(x => x == allCells[curWayY, curWayX + 1]))
+            {
+                currWayGo = allCells[curWayY, curWayX + 1];
+                curWayX++;
+                Debug.Log("Next Cell is Right");
+            }
+            else if (curWayX < 0 && allCells[curWayY - 1, curWayX].GetComponent<CallScript>().isGround &&
+                !WayPoints.Exists(x => x == allCells[curWayY - 1, curWayX]))
+            {
+                currWayGo = allCells[curWayY - 1, curWayX];
+                curWayY--;
+                Debug.Log("Next Cell is Up");
+            }
+            else if (curWayX < (fieldHeight - 1) && allCells[curWayY + 1, curWayX].GetComponent<CallScript>().isGround &&
+                !WayPoints.Exists(x => x == allCells[curWayY + 1, curWayX]))
+            {
+                currWayGo = allCells[curWayY + 1, curWayX];
+                curWayY++;
+                Debug.Log("Next Cell is Down");
+            }
+            else
+                break;
 
+            WayPoints.Add(currWayGo);
         }
     }
 }
