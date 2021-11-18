@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class CellSelect : MonoBehaviour
 {
-    public void HitRay()
+    [SerializeField] private bool _isWay = false;
+    public int CellId;
+
+    public void SetIsWay(bool way)
     {
-        Destroy(gameObject);
+        _isWay = way;
+    }
+    public void SetCellId(int id)
+    {
+        CellId = id;
     }
 }
