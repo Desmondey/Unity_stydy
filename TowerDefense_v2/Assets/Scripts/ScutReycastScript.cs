@@ -16,22 +16,12 @@ public class ScutReycastScript : MonoBehaviour
         //„D„€„q„p„r„|„u„~„y„u „‘„‰„u„z„{„y „„…„„„y
         if (Input.GetMouseButtonDown(0))
         {
-            var rayObj = PointRayCast(Input.mousePosition);
-            if (rayObj !=  null)
-            {
-                rayObj.GetComponent<CellSelect>().SetIsWay(true);
-                rayObj.GetComponent<Image>().color = new Color(0.4232645f, 0.9245283f, 0.0654147f);
-            }          
+            SetWayCell(true);   
         }
         //„T„t„p„|„u„~„y„u „‘„‰„u„z„{„y „„…„„„y
         if (Input.GetMouseButtonDown(1))
         {
-            var rayObj = PointRayCast(Input.mousePosition);
-            if (rayObj != null)
-            {
-                rayObj.GetComponent<CellSelect>().SetIsWay(false);
-                rayObj.GetComponent<Image>().color = new Color(0.7735849f, 0.2371841f, 0.2371841f);
-            }
+            SetWayCell(false);
         }
     }
     //„U„…„~„{„ˆ„y„‘ „„€„|„…„‰„u„~„y„‘ UI „€„q„Œ„u„{„„„p „„€ „{„€„p„‚„t„y„~„p„„„p„} „{„|„y„{„p „}„„Š„y
@@ -41,10 +31,21 @@ public class ScutReycastScript : MonoBehaviour
         List<RaycastResult> resultsData = new List<RaycastResult>();
         pointerData.position = position;
         EventSystem.current.RaycastAll(pointerData, resultsData);
+
         if (resultsData.Count > 0 && resultsData[0].gameObject.layer == 6)
         {
             return resultsData[0].gameObject;
         }
         return null;
+    }
+    private void SetWayCell(bool IsWayFlag)
+    {
+        Color color = IsWayFlag == true ? new Color(0.4232645f, 0.9245283f, 0.0654147f) : new Color(0.7735849f, 0.2371841f, 0.2371841f);
+        var rayObj = PointRayCast(Input.mousePosition);
+        if (rayObj != null)
+        {
+            rayObj.GetComponent<CellSelect>().SetIsWay(IsWayFlag);
+            rayObj.GetComponent<Image>().color = color;
+        }
     }
 }
