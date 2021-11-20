@@ -54,10 +54,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CellSelect.cs" />
+    <Compile Include="Assets\Scripts\SaveMapSrc.cs" />
     <Compile Include="Assets\Scripts\TestReycast.cs" />
     <Compile Include="Assets\Scripts\WayCreator.cs" />
-    <Compile Include="Assets\Scripts\GenerationFields.cs" />
     <Compile Include="Assets\Scripts\ScutReycastScript.cs" />
+    <Compile Include="Assets\Scripts\GenerationFields.cs" />
+    <Compile Include="Assets\Scripts\AllWayCells.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
