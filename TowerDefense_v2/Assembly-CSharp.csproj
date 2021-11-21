@@ -58,9 +58,10 @@
     <Compile Include="Assets\Scripts\AllWayCells.cs" />
     <Compile Include="Assets\Scripts\TestReycast.cs" />
     <Compile Include="Assets\Scripts\WayCreator.cs" />
-    <Compile Include="Assets\Scripts\ScutReycastScript.cs" />
-    <Compile Include="Assets\Scripts\GenerationFields.cs" />
+    <Compile Include="Assets\Scripts\CreateWay.cs" />
     <Compile Include="Assets\Scripts\LoadMapSrc.cs" />
+    <Compile Include="Assets\Scripts\GenerationFields.cs" />
+    <Compile Include="Assets\Scripts\ShutReycaster.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

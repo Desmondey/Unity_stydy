@@ -9,6 +9,19 @@ public class LoadMapSrc : MonoBehaviour
     [SerializeField] private Transform _setParentText;
     private List<string> _saveMapSrc;
     private List<GameObject> _tempGameObjText;
+    private ShutReycaster _shutReycaster;
+
+    private void Start()
+    {
+        _shutReycaster = GetComponent<ShutReycaster>();
+    }
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            ClickOnObjLoad(_shutReycaster.PointRayCast());
+        }
+    }
     public void OpenWindowLoad()
     {
         _saveMapSrc = new SaveMapSrc().GetAllMapInFolder();
@@ -22,7 +35,17 @@ public class LoadMapSrc : MonoBehaviour
             _tempGameObjText.Add(tempLoadText);
         }
     }
+    private void ClickOnObjLoad(GameObject getClickObj)
+    {
+        if (getClickObj.layer == 7)
+        {
+            getClickObj.transform.gameObject.GetComponent<Text>().text = "„S„\ „N„@„G„@„L „N„@ „N„E„C„O -_- „O„O„O„O„O„O„O„O„O „N„E„E„E„E„E„E„E„E„E„E„E„E„S„S„S„S„S„S„S„S„S„S";
+        }
+    }
+    private void LoidInFolder()
+    {
 
+    }
     public void CloseWindowLoadDestroyText()
     {
         foreach (GameObject item in _tempGameObjText)

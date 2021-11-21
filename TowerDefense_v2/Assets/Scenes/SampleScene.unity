@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 9431846}
   - component: {fileID: 9431848}
   - component: {fileID: 9431849}
+  - component: {fileID: 9431850}
   m_Layer: 0
   m_Name: SaveAndLoadMap
   m_TagString: Untagged
@@ -199,6 +200,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loadTextPref: {fileID: 2603200878132348708, guid: e3440029f6a0d724a97fbaec6dc0aeb3, type: 3}
   _setParentText: {fileID: 1312971504}
+--- !u!114 &9431850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9431845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94cfd4a22d270a64dbb76fd3806ff250, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &316725427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,6 +1062,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330436248}
   m_CullTransparentMesh: 1
+--- !u!1 &1642569004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1642569006}
+  - component: {fileID: 1642569005}
+  m_Layer: 0
+  m_Name: ShutReycaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1642569005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642569004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94cfd4a22d270a64dbb76fd3806ff250, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1642569006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642569004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1674330992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,9 +1545,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1857480988}
+  - component: {fileID: 1857480989}
   - component: {fileID: 1857480987}
   m_Layer: 0
-  m_Name: ShutReycast
+  m_Name: CreateWay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1506,10 +1563,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1857480986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a2c9fa89a9cc7b4dab7ca095a6789fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 94cfd4a22d270a64dbb76fd3806ff250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allWay: {fileID: 9431845}
 --- !u!4 &1857480988
 Transform:
   m_ObjectHideFlags: 0
@@ -1518,12 +1574,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1857480986}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 5.96, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1857480989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857480986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a2c9fa89a9cc7b4dab7ca095a6789fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allWay: {fileID: 9431845}
 --- !u!1 &1917270292
 GameObject:
   m_ObjectHideFlags: 0
