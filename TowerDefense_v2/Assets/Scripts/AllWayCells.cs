@@ -23,6 +23,7 @@ public class AllWayCells : MonoBehaviour
     {
         return AllWayCell;
     }
+    //„P„€„|„…„‰„y„„„ „r„ƒ„u „‘„‰„u„z„{„y „„…„„„y „„‚„u„€„q„‚„p„x„€„r„p„~„~„„u „r „ƒ„„„‚„€„{„…
     public string GetAllWayCellString()
     {
         string tempAllWayCell = "";

@@ -46,17 +46,20 @@ public class ScutReycastScript : MonoBehaviour
     }
     private void SetWayCell(GameObject PointRayCast, bool IsWayFlag)
     {
-        Color color = IsWayFlag == true ? new Color(0.4232645f, 0.9245283f, 0.0654147f) : new Color(0.7735849f, 0.2371841f, 0.2371841f);
-        var rayObj = PointRayCast;
-        if (rayObj != null)
+        if (PointRayCast.layer == 6)
         {
-            rayObj.GetComponent<CellSelect>().SetIsWay(IsWayFlag);
-            rayObj.GetComponent<Image>().color = color;
+            Color color = IsWayFlag == true ? new Color(0.4232645f, 0.9245283f, 0.0654147f) : new Color(0.7735849f, 0.2371841f, 0.2371841f);
+            var rayObj = PointRayCast;
+            if (rayObj != null)
+            {
+                rayObj.GetComponent<CellSelect>().SetIsWay(IsWayFlag);
+                rayObj.GetComponent<Image>().color = color;
 
-            if (IsWayFlag)
-                tempAllWay.AddWayCell(rayObj);
-            else
-                tempAllWay.DeleteWayCell(rayObj);
+                if (IsWayFlag)
+                    tempAllWay.AddWayCell(rayObj);
+                else
+                    tempAllWay.DeleteWayCell(rayObj);
+            }
         }
     }
 }

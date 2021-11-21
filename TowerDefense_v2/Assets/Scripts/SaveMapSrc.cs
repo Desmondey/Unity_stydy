@@ -15,7 +15,7 @@ public class SaveMapSrc : MonoBehaviour
     }
     public void SaveMapInFolder()
     {
-        SaveMap(path, GetLastMap(path));
+        SaveMap(path, GetLastMap());
     }
     private void SaveMap(string pathFolder, int cardNumber)
     {
@@ -26,34 +26,44 @@ public class SaveMapSrc : MonoBehaviour
         writeMap.Close();        
     }
 
-    private int GetLastMap(string pathFolder)
-    {
-        int LastIntResult = 0;
-        List<int> tempArr = new List<int>();
+    public List<string> GetAllMapInFolder()
+    {       
+        List<string> tempArrStr = new List<string>();
         string tempString;
-        string[] tempAllmap = Directory.GetFiles(pathFolder);
-        foreach (string map in tempAllmap)            
+        string[] tempAllmap = Directory.GetFiles(path);
+        foreach (string map in tempAllmap)
         //1.„P„€„|„…„‰„y„„„ „r„ƒ„u „†„p„z„|„y „„€ „„…„„„y path
         //2.„€„„„ƒ„u„‘„„„ „r„ƒ„u „†„p„z„|„ „ƒ „„€„}„u„„„{„€„z meta
         {
-
-            tempString = map.Substring(map.IndexOf('‡‚')+1);
-            if (tempString.Contains("meta"))
-                continue;
-            tempArr.Add(int.Parse(tempString));
+                tempString = map.Substring(map.IndexOf('‡‚') + 1);
+                if (tempString.Contains("meta"))
+                    continue;
+                tempArrStr.Add(tempString);
+        }
+        return tempArrStr;
+    }
+    private int GetLastMap() 
+    {
+        List<int> tempMapList = new List<int>();
+        int LastIntResult = 0;
+        foreach (string tempStr in GetAllMapInFolder())
+        {
+            tempMapList.Add(int.Parse(tempStr));
         }
         //„P„€„|„…„‰„p„u„„ „~„p„y„q„€„|„„Š„u„u „‰„y„ƒ„|„€ + 1
         //„y„|„y
         //„X„y„ƒ„|„€ „„‚„€„„…„‹„u„~„~„€„u „„€ „‡„‚„€„~„€„|„€„s„y„y
-        for (int i = 0; i <= tempArr.Count + 1; i++)
+        for (int i = 0; i <= tempMapList.Count + 1; i++)
         {
-            if(tempArr.Find((x) => x == i) >= i)
+            if(tempMapList.Find((x) => x == i) >= i)
             {
                 continue;
             }
             LastIntResult = i;
             break;
+            
         }
+        print(LastIntResult);
         return LastIntResult;
     }
 }
